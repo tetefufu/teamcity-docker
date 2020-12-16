@@ -1,0 +1,12 @@
+version: '2'
+services:
+  server:
+    image: 'jetbrains/teamcity-server'
+    ports:
+      - 8111:8111
+    environment:
+      - TEAMCITY_SERVER_MEM_OPTS="-Xmx750m"
+  agent:
+    image: 'jetbrains/teamcity-agent'
+    environment:
+      - SERVER_URL=server:8111
